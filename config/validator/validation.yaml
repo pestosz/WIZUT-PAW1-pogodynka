@@ -1,0 +1,67 @@
+App\Entity\Location:
+    properties:
+        name:
+            - NotBlank:
+                  groups: ['create', 'edit']
+        country:
+            - NotBlank:
+                  groups: ['create', 'edit']
+        width:
+            - NotBlank:
+                  groups: ['create', 'edit']
+            - Range:
+                  min: -90
+                  max: 90
+                  notInRangeMessage: 'This value should be between -90 and 90.'
+                  groups: ['create', 'edit']
+        length:
+            - NotBlank:
+                  groups: ['create', 'edit']
+            - Range:
+                  min: -180
+                  max: 180
+                  notInRangeMessage: 'This value should be between -180 and 180.'
+                  groups: ['create', 'edit']
+
+App\Entity\Forecast:
+    properties:
+        date:
+            - NotBlank:
+                  groups: ['create', 'edit']
+            - Type:
+                  type: DateTimeInterface
+                  groups: ['create', 'edit']
+        temperature:
+            - NotBlank:
+                  groups: ['create', 'edit']
+            - Range:
+                  min: -60
+                  max: 60
+                  notInRangeMessage: 'This value should be between -60 and 60.'
+                  groups: ['create', 'edit']
+        rain_chance:
+            - NotBlank:
+                  groups: ['create', 'edit']
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'This value be between 0 and 100.'
+                  groups: ['create', 'edit']
+        wind_speed:
+            - NotBlank:
+                  groups: ['create', 'edit']
+            - GreaterThanOrEqual:
+                  value: 0
+                  message: 'This value should be greater than or equal to 0.'
+                  groups: ['create', 'edit']
+        humidity:
+            - NotBlank:
+                  groups: ['create', 'edit']
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'This value should be between 0 and 100.'
+                  groups: ['create', 'edit']
+        location:
+            - NotBlank:
+                  groups: ['create', 'edit']
